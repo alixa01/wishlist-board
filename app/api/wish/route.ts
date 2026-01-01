@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { cookies, headers } from "next/headers";
 import { randomUUID } from "crypto";
+import { revalidatePath } from "next/cache";
 
 export async function POST(req: NextRequest) {
   try {
@@ -55,6 +56,8 @@ export async function POST(req: NextRequest) {
         anonId,
       },
     });
+
+    revalidatePath("/");
 
     return NextResponse.json(data, { status: 201 });
   } catch (error) {

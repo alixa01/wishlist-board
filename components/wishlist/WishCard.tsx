@@ -21,12 +21,12 @@ export default function WishCard({ wish }: { wish: WishCardData }) {
     const vw = window.innerWidth;
     const vh = window.innerHeight;
 
-    const randX = () => (Math.random() - 0.5) * vw;
-    const randY = () => (Math.random() - 0.5) * vh;
+    const randX = () => (Math.random() - 0.5) * vw * 0.9;
+    const randY = () => (Math.random() - 0.5) * vh * 0.9;
 
     return {
-      top: `${10 + Math.random() * 80}vh`,
-      left: `${5 + Math.random() * 80}vw`,
+      top: `${Math.random() * 80}vh`,
+      left: `${Math.random() * 80}vw`,
       color: CARD_COLORS[Math.floor(Math.random() * CARD_COLORS.length)],
       duration: 60 + Math.random() * 35,
       delay: Math.random() * 2,
@@ -39,7 +39,7 @@ export default function WishCard({ wish }: { wish: WishCardData }) {
 
   return (
     <motion.div
-      className={`${style.color} rounded-2xl p-5 shadow-lg backdrop-blur-sm border border-white/50 opacity-85 w-60`}
+      className={`${style.color} fixed rounded-2xl p-5 shadow-lg backdrop-blur-sm border border-white/50 opacity-85 w-60`}
       style={{ top: style.top, left: style.left }}
       animate={{
         x: style.motionX,

@@ -5,6 +5,7 @@ import WishForm from "@/components/wishlist";
 import WishCard from "@/components/wishlist/WishCard";
 import { type WishCardData } from "@/types/wish";
 import { useEffect, useState } from "react";
+import Footer from "../components/layout/Footer";
 
 export default function Home() {
   const [wishes, setWishes] = useState<WishCardData[]>([]);
@@ -26,13 +27,13 @@ export default function Home() {
       <WishForm />
       <section
         id="wish-card"
-        className="absolute inset-0 z-10 pointer-events-none">
-        <div className="relative mx-auto max-w-7xl h-full">
-          {wishes.map((wish) => (
-            <WishCard key={wish.id} wish={wish} />
-          ))}
-        </div>
+        className="fixed inset-0 z-10 pointer-events-none">
+        {wishes.map((wish) => (
+          <WishCard key={wish.id} wish={wish} />
+        ))}
       </section>
+
+      <Footer />
     </main>
   );
 }
